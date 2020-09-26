@@ -1,7 +1,7 @@
 package com.travelagency.business;
 
 import java.util.Date;
-
+import com.travelagency.data.PinnedPost;
 import com.travelagency.data.Post;
 
 public class PostDto {
@@ -64,6 +64,13 @@ public class PostDto {
 		post.setLastUpdatedAt(this.lastUpdatedAt);
 		post.setVisibility(this.visibility);
 		return post;
+	}
+	
+	public PinnedPostDto pin() {
+		PinnedPostDto pinnedPostDto=new PinnedPostDto();
+		pinnedPostDto.setOwner(this.owner);
+		pinnedPostDto.setPostId(this.id);
+		return pinnedPostDto;
 	}
 	
 }

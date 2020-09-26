@@ -20,7 +20,6 @@ public class PinnedPostServiceImplementation implements PinnedPostService<Pinned
 		}catch(Exception e) {
 			throw e;
 		}
-		
 	}
 
 	@Override

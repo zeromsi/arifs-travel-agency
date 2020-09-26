@@ -9,28 +9,19 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class PinnedPost {
+
+	private Long postId;
 	
 	@Id
-	private Long id;
-
-	private String postId;
-	
 	private String owner;
 
 
-	public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getPostId() {
+	public Long getPostId() {
 		return postId;
 	}
 
-	public void setPostId(String postId) {
+	public void setPostId(Long postId) {
 		this.postId = postId;
 	}
 
@@ -42,11 +33,16 @@ public class PinnedPost {
 		this.owner = owner;
 	}
 
+	public PinnedPost(Long postId, String owner) {
+		super();
+		this.postId = postId;
+		this.owner = owner;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((owner == null) ? 0 : owner.hashCode());
 		result = prime * result + ((postId == null) ? 0 : postId.hashCode());
 		return result;
@@ -61,11 +57,6 @@ public class PinnedPost {
 		if (getClass() != obj.getClass())
 			return false;
 		PinnedPost other = (PinnedPost) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
 		if (owner == null) {
 			if (other.owner != null)
 				return false;
@@ -79,21 +70,11 @@ public class PinnedPost {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "PinnedPost [id=" + id + ", postId=" + postId + ", owner=" + owner + "]";
-	}
-
 	public PinnedPost() {
 		super();
 	}
 
-	public PinnedPost(Long id, String postId, String owner) {
-		super();
-		this.id = id;
-		this.postId = postId;
-		this.owner = owner;
-	}
+	
 
 	
 	

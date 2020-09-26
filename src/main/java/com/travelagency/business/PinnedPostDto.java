@@ -3,26 +3,15 @@ package com.travelagency.business;
 import com.travelagency.data.PinnedPost;
 
 public class PinnedPostDto {
-	
-	private Long id;
-
-	private String postId;
+	private Long postId;
 	
 	private String owner;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getPostId() {
+	public Long getPostId() {
 		return postId;
 	}
 
-	public void setPostId(String postId) {
+	public void setPostId(Long postId) {
 		this.postId = postId;
 	}
 
@@ -34,11 +23,7 @@ public class PinnedPostDto {
 		this.owner = owner;
 	}
 
-	@Override
-	public String toString() {
-		return "PinnedPost [id=" + id + ", postId=" + postId + ", owner=" + owner + "]";
-	}
-	
+
 	public PinnedPost convertIntoPinnedPost() {
 		PinnedPost pinnedPost=new PinnedPost();
 		pinnedPost.setOwner(this.owner);
