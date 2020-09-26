@@ -1,6 +1,8 @@
 package com.travelagency.business;
 
-public class PinnedPost {
+import com.travelagency.data.PinnedPost;
+
+public class PinnedPostDto {
 	
 	private Long id;
 
@@ -37,6 +39,12 @@ public class PinnedPost {
 		return "PinnedPost [id=" + id + ", postId=" + postId + ", owner=" + owner + "]";
 	}
 	
+	public PinnedPost convertIntoPinnedPost() {
+		PinnedPost pinnedPost=new PinnedPost();
+		pinnedPost.setOwner(this.owner);
+		pinnedPost.setPostId(this.postId);
+		return pinnedPost;
+	}
 	
 
 }

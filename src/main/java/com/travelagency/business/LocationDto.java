@@ -1,6 +1,8 @@
 package com.travelagency.business;
 
-public class Location {
+import com.travelagency.data.Location;
+
+public class LocationDto {
 	private Long id;
 	private String name;
 	public Long getId() {
@@ -20,5 +22,10 @@ public class Location {
 		return "Location [id=" + id + ", name=" + name + "]";
 	}
 	
+	public Location convertIntoLocation() {
+		Location location=new Location();
+		location.setName(this.name);
+		return location;
+	}
 
 }
