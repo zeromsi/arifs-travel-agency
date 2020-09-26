@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 public interface PostApi<T,I> {
 	@PostMapping("posts")
-	ResponseEntity<?> save(String t);
+	ResponseEntity<?> save(T t);
 
 	@GetMapping("posts")
 	ResponseEntity<?> findAll();

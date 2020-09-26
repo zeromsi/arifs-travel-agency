@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 public interface LocationApi <T,I> {
 	@PostMapping("locations")
-	ResponseEntity<?> save(String t);
+	ResponseEntity<?> save(T t);
 
 	@GetMapping("locations")
 	ResponseEntity<?> findAll();
