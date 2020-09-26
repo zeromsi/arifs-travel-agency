@@ -3,11 +3,13 @@ package com.travelagency.business.service.implementation;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.travelagency.business.LocationDto;
 import com.travelagency.business.service.LocationService;
 import com.travelagency.data.repository.LocationRepository;
 
+@Service
 public class LocationServiceImplementation implements LocationService<LocationDto, Long>{
 	
 	@Autowired
