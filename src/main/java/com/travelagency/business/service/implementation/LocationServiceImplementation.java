@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.travelagency.business.LocationDto;
 import com.travelagency.business.service.LocationService;
+import com.travelagency.data.Location;
 import com.travelagency.data.repository.LocationRepository;
 
 @Service
@@ -27,14 +28,8 @@ public class LocationServiceImplementation implements LocationService<LocationDt
 
 	@Override
 	public List<LocationDto> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public LocationDto findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Location> locations=locationRepository.findAll();
+		return Location.convertIntoDtos(locations);
 	}
 
 }

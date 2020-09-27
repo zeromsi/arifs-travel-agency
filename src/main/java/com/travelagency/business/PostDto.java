@@ -1,6 +1,8 @@
 package com.travelagency.business;
 
 import java.util.Date;
+
+import com.travelagency.data.Location;
 import com.travelagency.data.PinnedPost;
 import com.travelagency.data.Post;
 
@@ -63,6 +65,7 @@ public class PostDto {
 		post.setCreatedAt(this.createdAt);
 		post.setLastUpdatedAt(this.lastUpdatedAt);
 		post.setVisibility(this.visibility);
+		post.setLocation(this.location.convertIntoLocation());
 		return post;
 	}
 	

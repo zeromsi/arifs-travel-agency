@@ -7,5 +7,7 @@ import com.travelagency.data.PinnedPost;
 @Repository
 public interface PinnedPostRepository extends JpaRepository<PinnedPost,Long>{
 
+	PinnedPost findByOwner(String owner);
+
 	
 }

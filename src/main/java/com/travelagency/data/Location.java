@@ -1,5 +1,8 @@
 package com.travelagency.data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -47,11 +50,17 @@ public class Location {
 		super();
 	}
 
+	public static List<LocationDto> convertIntoDtos(List<Location> locations){
+		List<LocationDto> dtos=new ArrayList();
+		locations.stream().forEach(each->{
+			dtos.add(each.convertIntoDto());
+		});
+		return dtos;
+	}
 	public LocationDto convertIntoDto() {
 		LocationDto dto=new LocationDto();
 		dto.setId(this.id);
 		dto.setName(this.name);
-		// TODO Auto-generated method stub
 		return dto;
 	}
 	

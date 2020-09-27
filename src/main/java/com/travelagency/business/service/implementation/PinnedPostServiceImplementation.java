@@ -24,18 +24,6 @@ public class PinnedPostServiceImplementation implements PinnedPostService<Pinned
 		}
 	}
 
-	@Override
-	public List<PinnedPostDto> findAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PinnedPostDto findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 
 
 }

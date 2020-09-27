@@ -25,6 +25,7 @@ public class LocationDto {
 	public Location convertIntoLocation() {
 		Location location=new Location();
 		location.setName(this.name);
+		location.setId(this.id);
 		return location;
 	}
 

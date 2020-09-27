@@ -188,6 +188,7 @@ public class Post {
 
 	public  PostDto convertIntoDto() {
 		PostDto dto=new PostDto();
+		dto.setId(this.getId());
 		dto.setBody(this.getBody());
 		dto.setCreatedAt(this.getCreatedAt());
 		dto.setLastUpdatedAt(this.getLastUpdatedAt());
