@@ -58,29 +58,30 @@ public class PostApiImplementation implements PostApi<PostDto, Long>{
 
 	@Override
 	@PreAuthorize("hasAuthority('role_super_admin') or hasAuthority('role_user')")
-	public ResponseEntity<?> pin(@RequestBody PostDto dto,@RequestParam(name = "privacy") String privacy) {
+	public ResponseEntity<?> pin(@RequestBody PostDto dto, @RequestParam(name = "privacy") String privacy) {
 		CustomPrincipal customPrincipal = ((CustomPrincipal) SecurityContextHolder.getContext().getAuthentication()
 				.getPrincipal());
-		if(privacy.equals("") || privacy=="") {
-		try {
-			postService.pin(dto,customPrincipal.getUsername());
-			return new ResponseEntity<PostDto>(HttpStatus.ACCEPTED);
-		}catch(Exception e) {
-			return new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
+		if (privacy != "") {
+			if (privacy == "public") {
+				dto.setVisibility("public");
+			} else if (privacy == "private") {
+				dto.setVisibility("private");
+			}
+			try {
+				postService.updatePrivacy(dto, customPrincipal.getUsername());
+				return new ResponseEntity<PostDto>(HttpStatus.ACCEPTED);
+			} catch (Exception e) {
+				return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+			}
+		} else {
+			try {
+				postService.pin(dto, customPrincipal.getUsername());
+				return new ResponseEntity<PostDto>(HttpStatus.ACCEPTED);
+			} catch (Exception e) {
+				return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+			}
+
 		}
-	}else {
-		if(privacy=="public") {
-		dto.setVisibility("public");
-		}else if(privacy=="private") {
-		  dto.setVisibility("private");
-		}
-		try {
-			postService.updatePrivacy(dto,customPrincipal.getUsername());
-			return new ResponseEntity<PostDto>(HttpStatus.ACCEPTED);
-		}catch(Exception e) {
-			return new ResponseEntity<String>(e.getMessage(),HttpStatus.BAD_REQUEST);
-		}
-	}
 	}
 
 
