@@ -1,6 +1,9 @@
 package com.travelagency.data;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
+
+import com.travelagency.business.PostDto;
 
 @Entity
 public class Post {
@@ -171,6 +176,25 @@ public class Post {
 			return false;
 		return true;
 	}
+ 
+	public List<PostDto> convertIntoDtos(List<Post> posts) {
+		List<PostDto> dtos=new ArrayList<>();
+		posts.stream().forEach(post->{
+			dtos.add(post.convertIntoDto());
+		});
+		
+		return dtos;
+	}
 
+	public  PostDto convertIntoDto() {
+		PostDto dto=new PostDto();
+		dto.setBody(this.getBody());
+		dto.setCreatedAt(this.getCreatedAt());
+		dto.setLastUpdatedAt(this.getLastUpdatedAt());
+		dto.setLocation(this.getLocation().convertIntoDto());
+		dto.setOwner(this.getOwner());
+		dto.setVisibility(this.getVisibility());
+		return dto;
+	}
 
 }

@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import com.travelagency.business.LocationDto;
+
 @Entity
 public class Location {
 	@Id
@@ -43,6 +45,14 @@ public class Location {
 
 	public Location() {
 		super();
+	}
+
+	public LocationDto convertIntoDto() {
+		LocationDto dto=new LocationDto();
+		dto.setId(this.id);
+		dto.setName(this.name);
+		// TODO Auto-generated method stub
+		return dto;
 	}
 	
 	
